@@ -1,0 +1,33 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/source/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="/source/jquery-ui-1.12.1.custom/jquery-ui.css">
+<meta charset="UTF-8">
+<script type="text/javascript">
+
+$(function() {
+  $("#btn2").click(function() {
+    $("#dl2").dialog({
+      modal:true,
+      title:"各フォルダ削除",//背景はしろ
+      buttons: {
+        "閉じる": function() {$(this).dialog("close");},//ここの背景は#5b96ee 文字色はしろ
+        "フォルダを削除": function() {$(this).dialog("close");},//ここの背景はしろ
+        "ファイルを削除":function(){$(this).dialog("close");},//ここの背景はしろ
+      }
+    });
+  });
+});
+
+</script>
+
+<div id="dl2" style="display:none;">
+  <p>削除したいフォルダまたはファイルをクリックしてください。</p>　//ここの背景は#e2e2e2
+</div>
+
+<div style="background-color:#CCC; padding : 20px;">
+  <input type="button" id="btn2" value="確認">
+</div>
+
+
+
+

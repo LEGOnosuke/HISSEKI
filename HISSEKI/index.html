@@ -1,0 +1,105 @@
+　
+<!DOCTYPE HTML>
+    <html lang="jp">
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/source/main.css">
+        <link rel="stylesheet" href="/source/main.css" media="(min-width: 900px) and (max-width: 3000px)">
+        <link rel="stylesheet" href="/source/mobile.css" media="(min-width: 10px) and (max-width: 900px)">
+        <link rel="stylesheet" href="/source/jquery-ui-1.12.1.custom/jquery-ui.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HISSEKI</title>
+        <link rel="icon" type="image/png" href="/images/HISSEKI.png"><!--faviconを指定-->
+    </head>
+
+    <body>
+        <div id="cover"></div>
+        <header>
+            <form class="search_container" method="get">
+                <!--検索bar！-->
+                <input type="text" size="25" placeholder="キーワードもしくはタグを入力" name="key" class="searcher">
+                <!--検索バァ！-->
+            </form>
+        </header>
+        <main>
+
+            <!-- HTML <! --dsa-- CSS  /*dsa*/   Javascript //ada  php //daas -->
+            <div class="sort-container">
+                <div class="cquarter-circle-1">
+                    <button class="abcBtn">A→Z</button>
+                </div>
+                <div class="cquarter-circle-2">
+                    <button class="sortMenuBtn"><img src="images/menu_White.svg" width="50px" height="50px"></button>
+                </div>
+                <div class="cquarter-circle-3">
+                    <button class="newBtn">NEW</button>
+                </div>
+                <div class="cquarter-circle-4">
+                    <button class="oldBtn">OLD</button>
+                </div>
+                <div class="cquarter-circle-5">
+                    <button class="folderBtn"><img src="images/folder_white.svg" width="30px" height="30px"></button>
+                </div>
+                
+                
+                
+                
+            </div>
+            <div class="catalog">
+                <div class="randomShow"></div>
+            </div>
+            <div id="cancelDialog" style="display:none;"><!-- 削除ダイアログ -->
+                <p>メモを削除しますか？</p>
+            </div>
+            <div class="catalogPopup"></div>
+            <div id="popupBG"></div>
+            <div class="addMemo"><!--うっせえわメモ-->
+                <span class="yoko"></span>
+                <span class="tate"></span>
+            </div>
+            <div class="makeNote-wrapper">
+                <p class="quit">やめる</p>
+                <p class="autoSave">自動保存されています。</p>
+                <p class="complete">完了</p>
+                <div class="property">
+                    <input type="text" name="subhead" placeholder="タイトル" class="title-input">
+                </div>
+                <div class="property">
+                    <div class="decideTag"></div>
+                    <div class="suggestTags"></div>
+                    <input type="text" name="tag" placeholder="タグをエンターで作成。タップで削除" class="tag-input">
+                </div>
+                <div class="property">
+                    <textarea name="content" id="text" cols="30" rows="10" class="content-input" placeholder="内容を入力してください。"></textarea>
+                </div>
+            </div>
+            <div class="addFolder-wrapper">
+                <div class="settingBtn">
+                    <img src="/images/settings.svg" style="width:100%;">
+                </div>
+                <p class="folder-description">新規フォルダ / メモを追加</p>
+                <div class="addFolderBtn">新規フォルダ</div>
+                <div class="addFiles">
+                    <input type="text" class="addFileInput" placeholder="タイトルを検索">
+                    <div class="searchResult"></div>
+                </div>
+                <div id="settingFolder" style="display:none;">
+                    <p>削除したいフォルダまたはファイルをクリックしてください。</p>
+                  </div>
+            </div>
+        </main>
+        <p class='right'>® 2021 HISSEKI Yukikaze Technology All reserved</p>
+        <footer>
+
+        </footer>
+        <script type="text/javascript" src="/source/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="/source/jquery.cookie.js"></script>
+        <script type="text/javascript" src="/source/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/source/script.js"></script>
+    </body>
+
+    </html>

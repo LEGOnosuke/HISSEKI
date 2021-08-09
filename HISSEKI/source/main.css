@@ -1,0 +1,648 @@
+
+/*
+*グレー　#6e6e6e
+*薄青　#5b96ee
+*
+*
+*
+*
+*/
+/* CSSのリセット（消さないで！！） */
+
+  html, body,
+
+  ul, ol, li,
+  h1, h2, h3, h4, h5, h6, p, div,img{
+    margin: 0;
+    padding: 0;
+  
+    scroll-behavior: smooth;
+  }
+
+  input[type=radio] {
+  display: none;
+  }
+  
+  body {
+    font-family: 'M PLUS 1p', sans-serif;
+    height: 100vh;
+  }
+  body {
+    height: 100vh;
+   
+  }
+
+
+  /*----------------------------------*/
+  .search_container{
+    box-sizing: border-box;
+    position: fixed;
+    border: 1px solid #6e6e6e;
+    display: block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    height: 2.3em;
+    overflow: hidden;
+    margin:5px;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 90;
+    top: 10px;
+  }
+  .search_container input[type="text"]{
+    border: none;
+    height: 2.0em;
+    width:100%;
+  }
+  .search_container input[type="text"]:focus {
+    outline: 0;
+  }
+  .search_container input[type="submit"]{
+    cursor: pointer;
+    font-family: FontAwesome;
+    border: none;
+    background-color: #ffffff;
+    color: #6e6e6e;
+    position: absolute;
+    width: 3.5em;
+    height: 3.0em;
+    right:0px;
+    top: -3px;
+    outline : none;
+  }
+  
+
+  h1{
+    font-family: 'M PLUS 1p', sans-serif;
+    padding:0px;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  p{
+    line-height: 190%;
+    font-family: "游ゴシック体", "Yu Gothic",　"ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";
+  }
+  
+  a {
+    text-decoration: none;
+    pointer-events:auto;
+    z-index: 30;
+  }
+  /*---------addmemoここから----------*/
+
+  .addMemo{
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #5b96ee;
+      right: 50px;
+      bottom: 60px;
+      z-index: 5;
+      border: none;
+      cursor: pointer;
+      
+  }
+  .tate{
+      width: 10px;
+      height: 50px;
+      position: absolute;
+      top: 25px;
+      left: 45px;
+      background-color: white;
+      z-index: 10;
+      border-radius: 5px;
+  }
+  .yoko{
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    top: 45px;
+    left: 25px;
+    background-color: white;
+    z-index: 10;
+    border-radius: 5px;
+  }
+  
+
+  /*---------addMemoここまデェェェェェェェェェェェェェェェェェン！！----------*/
+  
+  /*-----------makeNote-wrapper-------------*/
+  .makeNote-wrapper{
+    position: fixed;
+    width: 100%;
+    top:110vh;
+    left: 0;
+    box-shadow: 10px 10px 10px 10px #6e6e6e;
+    border-radius: 20px;
+    height: 90vh;
+    display: block;
+    transition: all 0.6s;
+    background-color: white;
+    margin: 5px;
+      
+  }
+  .makeNoteShow{
+    position: fixed;
+    top: 2.3em;
+    z-index: 300;
+  }
+/*---------------makeNoteの内容--------------*/
+.quit{
+    position: absolute;
+    top: 20px;
+    color: #5b96ee;
+    cursor: pointer;
+    left: 20px;;
+}
+.autoSave{
+    position: absolute;
+    top: 20px;
+    color: #6e6e6e;
+    left: 20%;
+}
+.tagDescrimination{
+    position: absolute;
+    top: 130px;
+    color: #6e6e6e;
+    font-size: 8px;
+    left: 3%;
+}
+
+.complete{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #5b96ee;
+    cursor: pointer;
+}
+.title-input{
+
+    width: 80%;
+    font-size:30px;
+    border: none;
+    margin: 40px;
+    margin-top: 60px;
+}
+.title-input::placeholder{
+    color: #c4c4c4;
+}
+.title-input:focus{
+    outline: none;
+}
+.suggestTags{
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 0.5px solid #5b96ee;
+  z-index: 400;
+  color: black;
+  position: absolute;
+  top:40px;
+  overflow: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;       /* Firefox 対応 */
+  display: none;
+}
+
+.suggestTags::-webkit-scrollbar {
+display: none;
+}
+.madeSuggest{
+  background: #c4c4c4;
+  color: white;
+  cursor: pointer;
+}
+
+.tag-input{
+
+    width: 80%;
+    font-size:20px;
+    border: none;
+    margin: 10px;
+    margin-left: 10px;
+}
+.tag-input::placeholder{
+    color: #c4c4c4;
+}
+.tag-input:focus{
+    outline: none;
+}
+
+.content-input{
+    width: 80%;
+    font-size: 16px;
+    border: none;
+    margin: 5px;
+}
+.content-input::placeholder{
+    color: #c4c4c4;
+
+}
+.content-input:focus{
+    outline: none;
+}
+.madeTag{
+    display: inline-block;
+    color: #3475d6;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 1px;
+    margin: 10px;
+    cursor: pointer;
+}
+/*-------------カタログ------------*/
+.randomShow{
+  border: 1px dotted #6e6e6e;
+    border-radius: 20px;
+    margin: 40px;
+    padding: 30px;
+    padding-top: 0px;
+}
+.randomShow::before{
+  content: "Today's Topic";
+  font-size: 3em;
+  font-family: 'Yu Gothic';
+  position: relative;
+  top: 10px;
+  font-weight: bold;
+
+}
+.catalog{
+    overflow: scroll;
+    margin-top: 2.3em;
+    height: 100vh;
+    -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+}
+.catalog::-webkit-scrollbar {
+  display: none;
+}
+.showedWrapper{
+    border: 1px solid #6e6e6e;
+    border-radius: 20px;
+    margin: 40px;
+    cursor: pointer;
+    padding: 30px;
+    padding-top: 0px;
+    z-index:100
+}
+.showedCancel{
+  position: relative;
+  top: 10px;
+  height: 30px;
+  left: -45px;
+  top: -20px;
+  opacity: 0;
+  z-index:0;
+}
+.changedCSSRandom{
+  margin: 20px;
+}
+.showedTitle{
+    font-family: 'Yu Gothic';
+}
+.Tag{
+    color: #3475d6;
+    display: inline-block;
+    margin: 10px;
+    font-size: 12px;
+}
+
+#popupBG{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(117, 117, 117);
+  opacity: 0.6;
+  position:fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display:none;
+}
+.popContentClass{
+  width: 100%;
+  overflow-wrap: break-word;
+}
+.popWrapperClass{
+  width: 70%;
+  height: 70vh;
+  position:fixed;
+  top: 10%;
+  left: 10%;
+  border-radius: 10px;
+  display: none;
+  background:white;
+  z-index: 200;
+  padding: 5%;
+  overflow:scroll;
+}
+.edited{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #5b96ee;
+  cursor: pointer;
+}
+.popMadeTag{
+  display: inline-block;
+  color: #3475d6;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 1px;
+  margin: 10px;
+  cursor: pointer;
+}
+.popTitle-input{
+
+  width: 80%;
+  font-size:30px;
+  border: none;
+  margin: 40px;
+  margin-top: 60px;
+}
+.popTitle-input::placeholder{
+  color: #c4c4c4;
+}
+.popTitle-input:focus{
+  outline: none;
+}
+.popTag-input{
+
+  width: 80%;
+  font-size:20px;
+  border: none;
+  margin: 10px;
+  margin-left: 10px;
+}
+.popTag-input::placeholder{
+  color: #c4c4c4;
+}
+.popTag-input:focus{
+  outline: none;
+}
+
+.popContent-input{
+  width: 80%;
+  font-size: 16px;
+  border: none;
+  margin: 5px;
+  height: 100%;
+}
+.popContent-input::placeholder{
+  color: #c4c4c4;
+
+}
+.popContent-input:focus{
+  outline: none;
+}
+
+
+
+
+/*-------------ソート機能------------*/
+.sort-container{
+  position: fixed;
+  right: 50px;
+  top: 60px;
+}
+.sortMenuBtn{
+  position: absolute;
+  z-index: 200;
+  background: none;
+  border: none;
+  cursor: pointer;
+  left:17px;
+  top:23px;
+}
+.abcBtn{
+  position: absolute;
+  z-index: 181;
+  bottom:17px;
+  right: 1px;
+  background: none;
+  border: none;
+  color:white;
+  font-size: 20px; 
+  cursor: pointer;
+}
+.oldBtn{
+  position: absolute;
+  z-index: 180;
+  left: 3px;
+  top: 18px;
+  background: none;
+  border: none;
+  color:white;
+  font-size: 20px; 
+  cursor: pointer;
+
+}
+.newBtn{
+  position: absolute;
+  z-index: 179;
+  right: 0;
+  top: 20px;
+  background: none;
+  border: none;
+  color:white;
+  font-size: 20px; 
+  cursor: pointer;
+}
+.folderBtn{
+  position: absolute;
+  z-index: 179;
+  right: 9px;
+  top: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.container {
+  margin: 20px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.cquarter-circle-1 {
+  position: absolute;
+  z-index: 181;
+  right: 20px;
+  top:20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #5b96ee;
+}
+
+.cquarter-circle-2 {
+  position: absolute;
+  z-index: 200;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: #5b96ee;
+  border-radius:50%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.cquarter-circle-3 {
+  position: absolute;
+  z-index: 179;
+  right: 20px;
+  top:20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #5b96ee;
+}
+
+.cquarter-circle-4 {
+  position: absolute;
+  z-index: 180;
+  right: 20px;
+  top:20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #5b96ee;
+}
+
+.cquarter-circle-5 {
+  position: absolute;
+  z-index: 180;
+  right: 20px;
+  top:20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #5b96ee;
+}
+
+/*-------------------------------階層機能----------------------------*/
+.folderCategory{
+  border:1px solid black;
+  margin:10px;
+}
+
+.folderWrapper{
+  border: 1px solid #6e6e6e;
+  border-radius: 20px;
+  margin: 40px;
+  cursor: pointer;
+  padding: 30px;
+  padding-top:10px;
+  font-family: 'Lato', sans-serif;
+}
+.folderIMG{
+  position: relative;
+  left:-60px;
+  top: 30px;
+}
+.folderTitle{
+  font-family: 'Lato', sans-serif;
+}
+/*-------------------フォルダ追加ボタン------------------------*/
+.addFolder-wrapper{
+  position: fixed;
+  border: black dashed 0.5px;
+  border-radius: 5bh;
+  width: 100%;
+  top: 95vh;
+  display: none;
+  transition: .7s;
+  background: white;
+  height: 30vh;
+  z-index: 300;
+}
+.addFolderShow{
+  top: 70vh;
+}
+.addFolderBtn{
+  background:#5b96ee;
+  font-size: 1.5em;
+  border-radius: 0.75em;
+  color: white;
+  text-align: center;
+  width: 50%;
+  position: absolute;
+  top: 200px;
+  margin-left: -25%;
+  z-index:250;
+  left: 50%;
+  cursor: pointer;
+
+}
+.addFolderBtnShow{
+  top: -2em;
+}
+.addFiles{
+  box-sizing: border-box;
+  border: 1px solid #6e6e6e;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+
+  margin:5px;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 90;
+  top: 1px;
+}
+.addFiles input[type="text"]{
+  border: none;
+  height: 2.0em;
+  width:100%;
+}
+.addFiles input[type="text"]:focus {
+  outline: 0;
+}
+
+.newFolderInputDefault{
+  font-size:3em,
+}
+.newFolderInputDefault input {
+  outline: none;
+}
+.smallTitle{
+  position:relative;
+  display: inline-block;
+  z-index:300;
+  margin: 6px;
+  background:#e2e2e2;
+  border-radius: 5px;
+  padding: 1px 5px 1px 5px;
+  cursor: pointer;
+}
+.smallTitle:hover{
+  background:#5b96ee;
+  color: #ffffff;
+}
+.searchResult{
+  overflow:scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+    scrollbar-width: none;       /* Firefox 対応 */
+}
+.searchResult::-webkit-scrollbar {
+  display: none;
+}
+.settingBtn{
+  position:absolute;
+  right: 0;
+  width: 100px;
+  top: -100px;
+  cursor: pointer;
+  z-index:400;
+}
+
+.right{
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
