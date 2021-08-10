@@ -544,7 +544,7 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
         var makeTitle = $('<h2></h2>',{
             "class":"showedTitle"
         })
-        if (titleData.length > 15) {
+        if (titleData.length > 20) {
             var deleteTitleLetter = 15 -titleData.length
             var slicedTitleLetter = titleData.slice(0,deleteTitleLetter)
             var shappedTitleData = slicedTitleLetter +  "…"
@@ -720,6 +720,9 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
                         //existCookieから削除する
                         var tempExistCookie = $.cookie('existCookie'); //Cookieから取得    //（永井より）varは宣言だから、488行目に移動
                         existIndex = tempExistCookie.indexOf('note' + hoveredIndex); //tempExistCookieの何番目に削除すべき要素があるのか見つけてexistIndexに代入
+
+                        console.log('Clicked! : ' + hoveredIndex);
+
                         tempExistCookie.splice(existIndex , 1); //existIndexのexistIndex番目を削除
                         $.cookie('existCookie', tempExistCookie, { expires: 730 }); //existCookieをCookieに保存する
                         TempExistCookie = ''; //次のために一応初期化しとく？
@@ -728,12 +731,11 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
                         titleArray = []         //titleArrayのリセット
                         //titleObjectIndex = {}   //titleObjectIndexのリセット
                         settingTitleData () //再読み込み
-                        showCookieData();　//最後に再表示      
+                        showCookieData();　//最後に再表示
 
                     },
                       "いいえ": function() {
                         //いいえ　がクリックされたとき
-                          
                         $(this).dialog("close");
 
                     },
@@ -814,6 +816,22 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
                 console.log($.cookie(popTagNumberNote));
 
             }
+            tagsArray.push(tagText)
+            tagsArray.sort()
+            tagsArray = tagsArray.filter(function (x, i, self) {
+                return self.indexOf(x) === i;
+            });
+            $.cookie("existTags",tagsArray)
+            console.log(tagsArray)
+            if (tagObjectIndex[tagText] == undefined) {
+                tagObjectIndex[tagText] = [reference]
+            }else{
+                var pushArrayTags = tagObjectIndex[tagText]
+                pushArrayTags.push(reference)
+                tagObjectIndex[tagText] = pushArrayTags
+            }
+            $.cookie("tagObjectIndexCookie",tagObjectIndex)
+           console.log(tagObjectIndex)
         }
         console.log("")
     })
@@ -871,6 +889,14 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
             content: editContent
         }
         $.cookie(popDeleteNumberNote, cookieData, { expires: 730 });
+
+        var deleteTagArrayIndex = tagsArray.indexOf(deleteTagId);//["note1","note2","note3","note4","note5"] この場合4がdeleteCookieIndex
+        if (deleteTagArrayIndex > -1) {
+            tagsArray.splice(deleteTagArrayIndex, 1);//["note1","note2","note3","note4","note5"].splice(4,1)
+        }
+        $.cookie('existTags', tagsArray)
+
+        delete tagObjectIndex[deleteTagId]
     });
     
     //-----------------メモ編集ここまで----------------- 
