@@ -544,13 +544,24 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
         var makeTitle = $('<h2></h2>',{
             "class":"showedTitle"
         })
-        if (titleData.length > 20) {
-            var deleteTitleLetter = 15 -titleData.length
-            var slicedTitleLetter = titleData.slice(0,deleteTitleLetter)
-            var shappedTitleData = slicedTitleLetter +  "…"
+        if ($(window).width() > 900) {
+            if (titleData.length > 20) {
+                var deleteTitleLetter = 15 -titleData.length
+                var slicedTitleLetter = titleData.slice(0,deleteTitleLetter)
+                var shappedTitleData = slicedTitleLetter +  "…"
+            }else{
+                var shappedTitleData = titleData
+            }
         }else{
-            var shappedTitleData = titleData
+            if (titleData.length > 8) {
+                var deleteTitleLetter = 8 -titleData.length
+                var slicedTitleLetter = titleData.slice(0,deleteTitleLetter)
+                var shappedTitleData = slicedTitleLetter +  "…"
+            }else{
+                var shappedTitleData = titleData
+            }
         }
+        
         makeTitle.html(shappedTitleData );
         var makeTag = $('<div></div>',{
             "class":"showedTag"
@@ -1703,14 +1714,21 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
            
             $('button.sortMenuBtn').html(
                 '<img src="images/menu_Black.svg" width="25px" height="25px">'
-
             )
-            $('.sortMenuBtn').animate({
-                opacity:"0.8",
-                left:"7px",
-                top:"10px"
-            },100)
-
+            if ($(window).width() > 900) {
+                $('.sortMenuBtn').animate({
+                    opacity:"0.8",
+                    left:"7px",
+                    top:"10px"
+                },100)
+            }else{
+                $('.sortMenuBtn').animate({
+                    opacity:"0.8",
+                    left:"-1px",
+                    top:"10px"
+                },100)
+            }
+            
             $('.cquarter-circle-2').css({
                 background:"white",
                 border:"1px solid black"
@@ -1755,21 +1773,40 @@ forを使ってtagsArrayの一つ一つの頭文字がmatchLetterとマッチす
             background:"#5b96ee",
             border:"none"
         })
-        $('.cquarter-circle-2').animate({
-            opacity:"1",
-            cursor:"pointer",
-            width:"100px",
-            height:"100px",
-            right:"0px",
-            top:"0px"
-        },100)
-        $('.sortMenuBtn').animate({
-            opacity:"1",
-            left:"17px",
-            top:"23px"
-        },100)
+        
+        
+        if ($(window).width() > 900) {
+            $('.sortMenuBtn').animate({
+                opacity:"1",
+                left:"17px",
+                top:"23px"
+            },100)
+            $('.cquarter-circle-2').animate({
+                opacity:"1",
+                cursor:"pointer",
+                width:"100px",
+                height:"100px",
+                right:"0px",
+                top:"0px"
+            },100)
+        }else{
+            $('.sortMenuBtn').animate({
+                opacity:"1",
+                left:"3px",
+                top:"11.5px"
+            },100)
+            $('.cquarter-circle-2').animate({
+                opacity:"1",
+                cursor:"pointer",
+                width:"80px",
+                height:"80px",
+                right:"0px",
+                top:"0px"
+            },100)
+        }
         $('.sortMenuBtn').css({
             cursor:"pointer"
+
         },100)
         $('.cquarter-circle-1').animate({
             right:"20px",
